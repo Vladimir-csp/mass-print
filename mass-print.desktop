@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Mass file print
+Name[ru]=Массовая печать файлов
+Exec=mass-print %F
+Terminal=true
+Comment=Print multiple files on default printer
+Comment[ru]=Распечатать несколько файлов на принтере по умолчанию
+Icon=printer
+MimeType=text/plain;message/rfc822;image/bmp;image/x-portable-anymap;image/gif;image/tiff;image/jpeg;image/png;image/svg;image/svg+xml;application/postscript;application/pdf;application/vnd.oasis.opendocument.spreadsheet;application/vnd.oasis.opendocument.text;application/msword;application/vnd.ms-word;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/msexcel;application/vnd.ms-excel;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/rtf;text/rtf;
+Categories=Office;
