@@ -1,0 +1,55 @@
+#: mass-print:11
+msgid "Succsess."
+msgstr ""
+#: mass-print:12
+msgid "Fail."
+msgstr ""
+#: mass-print:15
+msgid ""
+"Error occured! Press any key...\n"
+""
+msgstr ""
+#: mass-print:20
+msgid "No files were specified!\\nThis application designed to open files with it\\nLaunch without arguments has no function"
+msgstr ""
+#: mass-print:23
+msgid "No default printer set!\\nYou can set it by running the following command in terminal:\\n\\n   lpoptions -d printer_name\\n"
+msgstr ""
+#: mass-print:29
+msgid "Selected files will be printed on"
+msgstr ""
+#: mass-print:32
+msgid "Continue? (Y/n) "
+msgstr ""
+#: mass-print:35
+msgid "Canceled"
+msgstr ""
+#: mass-print:44
+msgid "Processing"
+msgstr ""
+#: mass-print:44
+msgid "(type:"
+msgstr ""
+#: mass-print:48
+msgid "Office document, printing with libreoffice..."
+msgstr ""
+#: mass-print:53
+msgid "Raster image, printing with lpr..."
+msgstr ""
+#: mass-print:58
+msgid "Vector image, printing with inkscape..."
+msgstr ""
+#: mass-print:63
+msgid "PDF or PS, printing with lpr..."
+msgstr ""
+#: mass-print:68
+msgid "Plain text, printing with lpr..."
+msgstr ""
+#: mass-print:72
+msgid "Common condition, printing with lpr..."
+msgstr ""
+#: mass-print:78
+msgid ""
+"Processing completed, press any key.\n"
+""
+msgstr ""
