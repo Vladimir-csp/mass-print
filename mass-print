@@ -8,11 +8,14 @@
 # (at your option) any later version. See <http://www.gnu.org/licenses/>.
 ##############################################################################
 
+TEXTDOMAIN=mass-print
+TEXTDOMAINDIR="$(dirname "$(readlink -f "$0")")/locale"
+
 SUCCESSMSG=$"Succsess."
 FAILMMSG=$"Fail."
 
 errorexit(){
-        read -n1 -p $"Error occured! Press any key...
+        read -sn1 -p $"Error occured! Press any key...
 "
         exit 1
 }
@@ -75,5 +78,5 @@ do
 	fi
 done
 
-read -n1 -p $"Processing completed, press any key.
+read -sn1 -p $"Processing completed, press any key.
 "
