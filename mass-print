@@ -1,0 +1,79 @@
+#!/bin/bash
+# mass-print script
+# by Vladimir Kudrya
+#
+# This script is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version. See <http://www.gnu.org/licenses/>.
+##############################################################################
+
+SUCCESSMSG=$"Succsess."
+FAILMMSG=$"Fail."
+
+errorexit(){
+        read -n1 -p $"Error occured! Press any key...
+"
+        exit 1
+}
+
+[ -z "$1" ] && { echo -e $"No files were specified!\nThis application designed to open files with it\nLaunch without arguments has no function" >&2 ; errorexit ; }
+
+# check for default printer
+LANG=C lpstat -d | grep -iq 'no system default' && { echo -e $"No default printer set!\nYou can set it by running the following command in terminal:\n\n   lpoptions -d printer_name\n" >&2 ; errorexit ; }
+
+# get default printer
+DEFPRINTER="$(lpstat -d | cut -d ':' -f 2- | sed 's/^[[:space:]]*\|[[:space:]]*$//g')"
+
+
+echo $"Selected files will be printed on" "\"$DEFPRINTER\""
+while true
+do
+	read -p $"Continue? (Y/n) " CONTINUE
+	echo $CONTINUE | grep -qi 'y' && echo $CONTINUE | grep -vqi 'n' && break
+	[ -z "$CONTINUE" ] && break
+	echo $CONTINUE | grep -qi 'n' && echo $CONTINUE | grep -vqi 'y' && { echo $"Canceled" ; sleep 2s ; exit ; }
+done
+echo
+
+ARGS=( $0 "$@" )
+for NUM in `seq 1 $#`
+do
+        [ ! -r "${ARGS[$NUM]}" ] && echo "Can not read file" "\"${ARGS[$NUM]}\"" >&2 && continue
+	MIMETYPE="$(xdg-mime query filetype "${ARGS[$NUM]}")"
+	echo -e $"Processing" "\"$(basename "${ARGS[$NUM]}")\"" $"(type:" "$MIMETYPE)"
+
+	if echo $MIMETYPE | grep -qi 'application/vnd.oasis.opendocument.spreadsheet\|application/vnd.oasis.opendocument.text\|application/msword\|application/vnd.ms-word\|application/vnd.openxmlformats-officedocument.wordprocessingml.document\|application/msexcel\|application/vnd.ms-excel\|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\|application/rtf\|text/rtf'
+	then
+		echo $"Office document, printing with libreoffice..."
+		libreoffice --headless -p  "${ARGS[$NUM]}" && echo "$SUCCESSMSG" || echo "$FAILMSG" >&2
+		echo
+	elif echo $MIMETYPE | grep -qi 'image/bmp\|image/gif\|image/tiff\|image/jpeg\|image/png\|image/x-portable-anymap'
+	then
+		echo $"Raster image, printing with lpr..."
+		lpr -C "$(basename "${ARGS[$NUM]}")" "${ARGS[$NUM]}" && echo "$SUCCESSMSG" || echo "$FAILMSG" >&2
+		echo
+	elif echo $MIMETYPE | grep -qi 'image/svg\|image/svg+xml'
+	then
+		echo $"Vector image, printing with inkscape..."
+		inkscape -p '|lpr' "$(basename "${ARGS[$NUM]}")" "${ARGS[$NUM]}" && echo "$SUCCESSMSG" || echo "$FAILMSG" >&2
+		echo
+	elif echo $MIMETYPE | grep -qi 'application/postscript\|application/pdf'
+	then
+		echo $"PDF or PS, printing with lpr..."
+		lpr -C "$(basename "${ARGS[$NUM]}")" "${ARGS[$NUM]}" && echo "$SUCCESSMSG" || echo "$FAILMSG" >&2
+		echo
+	elif echo $MIMETYPE | grep -qi 'text/plain\|message/rfc822'
+	then
+		echo $"Plain text, printing with lpr..."
+		lpr -C "$(basename "${ARGS[$NUM]}")" "${ARGS[$NUM]}" && echo "$SUCCESSMSG" || echo "$FAILMSG" >&2
+		echo
+	else
+		echo $"Common condition, printing with lpr..."
+		lpr -C "$(basename "${ARGS[$NUM]}")" "${ARGS[$NUM]}" && echo "$SUCCESSMSG" || echo "$FAILMSG" >&2
+		echo
+	fi
+done
+
+read -n1 -p $"Processing completed, press any key.
+"
