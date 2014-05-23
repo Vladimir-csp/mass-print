@@ -1,0 +1,88 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: mass-print\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vladimir Kudrya <vladimir-csp@yandex.ru>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: ru\n"
+
+#: Scripts/mass-print/mass-print:11
+msgid "Succsess."
+msgstr "Успешно."
+
+#: Scripts/mass-print/mass-print:12
+msgid "Fail."
+msgstr "Неуспешно."
+
+#: Scripts/mass-print/mass-print:15
+msgid "Error occured! Press any key...\n"
+msgstr "Произошла ошибка! Нажмите любую клавишу.\n"
+
+#: Scripts/mass-print/mass-print:20
+msgid ""
+"No files were specified!\\nThis application designed to open files with it"
+"\\nLaunch without arguments has no function"
+msgstr ""
+"Не указаны файлы!\\nЭто приложение расчитано на то чтобы открывать им файлы."
+"\\nПростой запуск без аргументов не выполняет никакой функции."
+
+#: Scripts/mass-print/mass-print:23
+msgid ""
+"No default printer set!\\nYou can set it by running the following command in "
+"terminal:\\n\\n   lpoptions -d printer_name\\n"
+msgstr ""
+"Не задан принтер по умолчанию!\\nМожно задать, выполнив в терминале команду:"
+"\\n\\n   lpoptions -d имя_принтера\\n"
+
+#: Scripts/mass-print/mass-print:29
+msgid "Selected files will be printed on"
+msgstr "Выбранные файлы будут напечатаны на"
+
+#: Scripts/mass-print/mass-print:32
+msgid "Continue? (Y/n) "
+msgstr "Продолжить? (Y/n) "
+
+#: Scripts/mass-print/mass-print:35
+msgid "Canceled"
+msgstr "Отменено"
+
+#: Scripts/mass-print/mass-print:44
+msgid "Processing"
+msgstr "Обработка"
+
+#: Scripts/mass-print/mass-print:44
+msgid "(type:"
+msgstr "(тип:"
+
+#: Scripts/mass-print/mass-print:48
+msgid "Office document, printing with libreoffice..."
+msgstr "Офисный документ, Печать с помощью libreoffice..."
+
+#: Scripts/mass-print/mass-print:53
+msgid "Raster image, printing with lpr..."
+msgstr "Растровое изображение, Печать с помощью lpr..."
+
+#: Scripts/mass-print/mass-print:58
+msgid "Vector image, printing with inkscape..."
+msgstr "Векторное изображение, Печать с помощью inkscape..."
+
+#: Scripts/mass-print/mass-print:63
+msgid "PDF or PS, printing with lpr..."
+msgstr "PDF или PS, Печать с помощью lpr..."
+
+#: Scripts/mass-print/mass-print:68
+msgid "Plain text, printing with lpr..."
+msgstr "Простой текст, печать с помощью lpr..."
+
+#: Scripts/mass-print/mass-print:72
+msgid "Common condition, printing with lpr..."
+msgstr "Общее условие, печать с помощью lpr..."
+
+#: Scripts/mass-print/mass-print:78
+msgid "Processing completed, press any key.\n"
+msgstr "Обработка завершена, Нажмите любую клавишу.\n"
